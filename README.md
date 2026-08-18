@@ -51,7 +51,7 @@ MyPocketCRUD/
 ## Technologies Used
 
 - PHP 8.1+
-- MySQL / MariaDB
+- MySQL
 - PDO (PHP Data Objects)
 - HTML5
 - Bootstrap 5
