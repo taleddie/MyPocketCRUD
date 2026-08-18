@@ -81,7 +81,7 @@ $hoje = date('Y-m-d');
         .acoes-transacao a {
             text-decoration: none;
             font-size: 0.85rem;
-            color: #ffffff;
+            color: #000000;
             top: -2;
         }
 

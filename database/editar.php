@@ -44,14 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $saldoAjustado -= $transacaoAtual->getValor();
     }
 
+    // saldo insuficiente
     if ($novoTipo === 'despesa' && $novoValor > $saldoAjustado) {
         $_SESSION['erro'] = "Saldo insuficiente para esta alteração.";
         header("Location: editar.php?id={$id}");
         exit;
     }
 
-    if ($novoTipo === 'despesa' && $novoValor === $saldoAjustado) {
-        $_SESSION['erro'] = "Exclua essa transação.";
+    // saldo insuficiente para despesa na primeira transação
+    if ($novoTipo === 'despesa' && $id === $repo->buscarPrimeiraId()) {
+        $_SESSION['erro'] = "Saldo insuficiente para esta alteração.";
         header("Location: editar.php?id={$id}");
         exit;
     }

@@ -24,6 +24,11 @@ class TransacaoRepo {
         $this->inserir('despesa', $despesa);
     }
 
+    public function buscarPrimeiraId(): int{
+        $stmt = $this->pdo->query("SELECT MIN(id) FROM transacoes");
+        return (int) $stmt->fetchColumn();
+    }
+
     // método auxiliar: o INSERT em si, reaproveitado pelos dois métodos acima
     private function inserir(string $tipo, Transacao $transacao): void {
         $stmt = $this->pdo->prepare(
